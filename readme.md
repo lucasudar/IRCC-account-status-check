@@ -1,4 +1,4 @@
-<h1 align="center">IRCC account status check</h1>
+IRCC account status check
 
 It helps for daily checking IRCC Canada account for new updates (Express Entry). 
 
