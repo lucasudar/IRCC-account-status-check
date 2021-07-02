@@ -1,4 +1,4 @@
-#IRCC account status check
+# IRCC account status check
 
 It helps for daily checking IRCC Canada account for new updates (Express Entry). 
 
