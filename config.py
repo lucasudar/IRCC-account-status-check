@@ -18,5 +18,7 @@ answer_three = 'REPLACE_ME'
 question_four = 'REPLACE_ME'
 # Security answer №4
 answer_four = 'REPLACE_ME'
-# Telegram token
+# Telegram token (BotFather gave you this)
 token_telegram = 'REPLACE_ME'
+# Telegram chat ID (check google how to know chat ID with your bot, you must add bot to chat first)
+chat_id = 'REPLACE_ME'

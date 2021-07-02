@@ -1,0 +1,9 @@
+certifi==2021.5.30
+chardet==4.0.0
+idna==2.10
+pytz==2021.1
+requests==2.25.1
+selenium==3.141.0
+six==1.16.0
+tzlocal==2.1
+urllib3==1.26.6
