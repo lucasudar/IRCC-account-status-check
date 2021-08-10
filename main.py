@@ -41,8 +41,6 @@ buttonclick()
 
 answer = driver.find_element_by_id('answer')
 
-with open('config.json') as f:
-    data = json.load(f)
 questions = data['questions_and_answers']
 
 for key, value in questions.items():
