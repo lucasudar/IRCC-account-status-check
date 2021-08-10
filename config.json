@@ -8,5 +8,6 @@
     "When did you meet your significant other?": ""
   },
   "token": "",
-  "chatID": ""
+  "chatID": "",
+  "timer": 600
 }
