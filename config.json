@@ -1,0 +1,12 @@
+{
+  "login": "",
+  "password": "",
+  "questions_and_answers": {
+    "Who is your memorable person": "",
+    "Which is your memorable date?": "",
+    "What is your memorable person hint": "",
+    "When did you meet your significant other?": ""
+  },
+  "token": "",
+  "chatID": ""
+}
