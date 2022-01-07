@@ -3,38 +3,40 @@ from selenium import webdriver
 import time
 from send_status import send_telegram
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
 from interval import every
 from datetime import datetime
 
 with open('config.json') as config_file:
     data = json.load(config_file)
 
-PATH = r"C:\Users\_Lucas_\Downloads\chromedriver.exe"
 chrome_options = Options()
-
 
 # TODO: Сделать запуск в headless режиме
 # chrome_options.headless = True
 # chrome_options.add_argument('--headless')
 # chrome_options.add_argument('disable-gpu')
+# chrome_options.add_argument('user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36"')
 
 
 def checkprofile():
-    driver = webdriver.Chrome(PATH, options=chrome_options)
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
     url = "https://onlineservices-servicesenligne-cic.fjgc-gccf.gc.ca/mycic/gccf?lang=eng&idp=gckey&svc=/mycic/start"
 
     def buttonclick():
-        driver.find_element_by_class_name('btn.btn-primary').click()
+        driver.find_element(By.CLASS_NAME, 'btn.btn-primary').click()
         time.sleep(1)
 
     driver.minimize_window()
     driver.get(url)
 
-    username = driver.find_element_by_id('token1')
+    username = driver.find_element(By.ID, 'token1')
     login = data["login"]
     username.send_keys(login)
 
-    password_input = driver.find_element_by_id('token2')
+    password_input = driver.find_element(By.ID, 'token2')
     password = data["password"]
     password_input.send_keys(password)
     time.sleep(2)
@@ -43,7 +45,7 @@ def checkprofile():
     buttonclick()
     buttonclick()
 
-    answer = driver.find_element_by_id('answer')
+    answer = driver.find_element(By.ID, 'answer')
 
     questions = data['questions_and_answers']
 
@@ -52,7 +54,7 @@ def checkprofile():
             answer.send_keys(value)
             buttonclick()
 
-    result = driver.find_element_by_xpath('/html/body/div[1]/main/div[1]/div/table/tbody/tr[1]/td[6]').text
+    result = driver.find_element(By.XPATH, '/html/body/div[1]/main/div[1]/div/table/tbody/tr[1]/td[6]').text
 
     if result == 'Read':
         print('\33[33m' + datetime.now().strftime(
