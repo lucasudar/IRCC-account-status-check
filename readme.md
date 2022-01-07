@@ -1,6 +1,6 @@
 # IRCC account status check
 
-It helps for daily checking IRCC Canada account for new updates (Express Entry). 
+It helps for daily checking IRCC Canada account for new updates (Express Entry). Can send notification on Telegram.
 
 Works on selenium and can be run on local machine.
 
@@ -16,7 +16,7 @@ Works on selenium and can be run on local machine.
 2. Change `PATH` for chromedriver.
 
 
-3.  Enter `config.py` your security information for script's work.
+3.  Enter `config.py` your security information for script's work. Get chatID - add @getidsbot
 
 
 4. Run `main.py` 

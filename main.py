@@ -59,10 +59,13 @@ def checkprofile():
             '%d-%m-%Y %H:%M:%S') + ' Current status: Nothing new, try again later.' + '\33[0m')
 
     else:
+        driver.get_screenshot_as_file("screenshot.png")
         print('\033[32m' + datetime.now().strftime('%d-%m-%Y %H:%M:%S') + ' Current status: Update!' + '\033[0m')
         send_telegram('Ghost update! Check profile ASAP')
 
     driver.quit()
 
+    
+checkprofile()
 
 every(data['timer'], checkprofile)
