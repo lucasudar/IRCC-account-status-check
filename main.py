@@ -23,9 +23,10 @@ chrome_options.add_argument("--disable-blink-features=AutomationControlled")
 # chrome_options.add_argument('--headless')
 # chrome_options.add_argument('disable-gpu')
 
+service = Service(ChromeDriverManager().install())
 
 def checkprofile():
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+    driver = webdriver.Chrome(service=service, options=chrome_options)
     url = "https://onlineservices-servicesenligne-cic.fjgc-gccf.gc.ca/mycic/gccf?lang=eng&idp=gckey&svc=/mycic/start"
 
     def buttonclick():
