@@ -14,11 +14,14 @@ with open('config.json') as config_file:
 
 chrome_options = Options()
 
+# Next 2 lines prevent selenium detection
+chrome_options.add_argument("--disable-blink-features")
+chrome_options.add_argument("--disable-blink-features=AutomationControlled")
+
 # TODO: Сделать запуск в headless режиме
 # chrome_options.headless = True
 # chrome_options.add_argument('--headless')
 # chrome_options.add_argument('disable-gpu')
-# chrome_options.add_argument('user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36"')
 
 
 def checkprofile():
