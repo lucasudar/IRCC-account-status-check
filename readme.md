@@ -18,5 +18,6 @@ Works on selenium and can be run on local machine.
 
 3. Run `main.py` 
 
+NOTE: if you have error with webdriver-manager run `pip install webdriver-manager`
 
 P.S. Try to find how launch on server for 24/7 check profile.
