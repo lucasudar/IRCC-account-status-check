@@ -58,9 +58,9 @@ def checkprofile():
             answer.send_keys(value)
             buttonclick()
 
-    result = driver.find_element(By.XPATH, '/html/body/div[1]/main/div[1]/div/table/tbody/tr[1]/td[6]').text
+    result = driver.find_element(By.XPATH, '/html/body/div[1]/main/div[1]/div/table/tbody/tr[1]/td[5]').text
 
-    if result == 'Read':
+    if result == 'Submitted':
         print('\33[33m' + datetime.now().strftime(
             '%d-%m-%Y %H:%M:%S') + ' Current status: Nothing new, try again later.' + '\33[0m')
 
