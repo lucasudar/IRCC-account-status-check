@@ -14,7 +14,7 @@ with open('config.json') as config_file:
 
 chrome_options = Options()
 
-# Next 2 lines prevent selenium detection
+# Next 2 lines prevent selenium detection as a bot
 chrome_options.add_argument("--disable-blink-features")
 chrome_options.add_argument("--disable-blink-features=AutomationControlled")
 
@@ -31,7 +31,7 @@ def checkprofile():
 
     def buttonclick():
         driver.find_element(By.CLASS_NAME, 'btn.btn-primary').click()
-        time.sleep(1)
+        time.sleep(3)
 
     driver.minimize_window()
     driver.get(url)
@@ -43,9 +43,11 @@ def checkprofile():
     password_input = driver.find_element(By.ID, 'token2')
     password = data["password"]
     password_input.send_keys(password)
-    time.sleep(2)
+    time.sleep(3)
 
     buttonclick()
+    if len(driver.find_elements(By.CLASS_NAME, 'btn.btn-default.cancel')) > 0:
+        driver.find_element(By.CLASS_NAME, 'btn.btn-default.cancel').click()
     buttonclick()
     buttonclick()
 
