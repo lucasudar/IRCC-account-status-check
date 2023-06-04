@@ -25,42 +25,32 @@ chrome_options.add_argument("--disable-blink-features=AutomationControlled")
 
 service = Service(ChromeDriverManager().install())
 
+
 def checkprofile():
     driver = webdriver.Chrome(service=service, options=chrome_options)
-    url = "https://onlineservices-servicesenligne-cic.fjgc-gccf.gc.ca/mycic/gccf?lang=eng&idp=gckey&svc=/mycic/start"
+    url = "https://portal-portail.apps.cic.gc.ca/signin?lang=en"
 
-    def buttonclick():
-        driver.find_element(By.CLASS_NAME, 'btn.btn-primary').click()
-        time.sleep(3)
-
-    driver.minimize_window()
+    # driver.minimize_window()
     driver.get(url)
 
-    username = driver.find_element(By.ID, 'token1')
+    username = driver.find_element(By.XPATH, '//*[@id="user-control"]')
     login = data["login"]
     username.send_keys(login)
 
-    password_input = driver.find_element(By.ID, 'token2')
+    password_input = driver.find_element(By.XPATH, '//*[@id="password-control"]')
     password = data["password"]
     password_input.send_keys(password)
     time.sleep(3)
 
-    buttonclick()
-    if len(driver.find_elements(By.CLASS_NAME, 'btn.btn-default.cancel')) > 0:
-        driver.find_element(By.CLASS_NAME, 'btn.btn-default.cancel').click()
-    buttonclick()
-    buttonclick()
+    driver.find_element(By.XPATH, '//*[@id="Login.SignInTitle_action_button0"]').click()
+    time.sleep(3)
 
-    answer = driver.find_element(By.ID, 'answer')
+    driver.find_element(By.ID, 'btnIAgree').click()
 
-    questions = data['questions_and_answers']
+    time.sleep(3)
 
-    for key, value in questions.items():
-        if key in driver.page_source:
-            answer.send_keys(value)
-            buttonclick()
-
-    result = driver.find_element(By.XPATH, '/html/body/div[1]/main/div[1]/div/table/tbody/tr[1]/td[5]').text
+    result = driver.find_element(By.XPATH,
+                                 '/html/body/ircc-portal-root/common-shell/div/main/ircc-portal-homepage/mat-sidenav-container/mat-sidenav-content/div/div/ng-component/div[2]/div/ircc-portal-paginated-table-component/div/div/div/table/tbody/tr[1]/td[5]/span[2]').text
 
     if result == 'Submitted':
         print('\33[33m' + datetime.now().strftime(
@@ -73,7 +63,7 @@ def checkprofile():
 
     driver.quit()
 
-    
+
 checkprofile()
 
 every(data['timer'], checkprofile)
